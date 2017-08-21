@@ -55,6 +55,10 @@ matrix_duplicate(float *src, float **dst, int matrix_dim);
 void
 print_matrix(float *mm, int matrix_dim);
 
+int fletcher_sum_2d_array(double *a, int nbRow, int nbCol);
+
+int fletcher_sum_1d_array(double *a, int size);
+
 #ifdef __cplusplus
 }
 #endif
