@@ -38,9 +38,9 @@ get_interval_by_usec(stopwatch *sw){
     return ((sw->end.tv_sec-sw->begin.tv_sec)*1000000+(sw->end.tv_usec-sw->begin.tv_usec));
 }
 
-int matlab_modulo(double x, double y) {
-    int n = floor(x/y);
-    return x - n*y;
+double matlab_modulo(double x, double y) {
+    double n = floor(x/y);
+    return (x - n*y);
 }
 
 int fletcher_sum_1d_array(double *a, int size) {
@@ -63,6 +63,17 @@ int fletcher_sum_2d_array(double *a, int nbRow, int nbCol) {
             sum2 = matlab_modulo((sum2 + sum1),255);
         }
     }
+
+    return sum2 * 256 + sum1;
+}
+
+int fletcher_sum_1d_array_int(int *a, int size) {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < size; ++i) {
+        sum1 = matlab_modulo((double)(sum1 + (double)a[i]),(double)255);
+        sum2 = matlab_modulo((double)(sum2 + sum1),(double)255);
+    } 
 
     return sum2 * 256 + sum1;
 }

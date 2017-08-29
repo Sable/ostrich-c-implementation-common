@@ -59,6 +59,8 @@ int fletcher_sum_2d_array(double *a, int nbRow, int nbCol);
 
 int fletcher_sum_1d_array(double *a, int size);
 
+int fletcher_sum_1d_array_int(int *a, int size);
+
 #ifdef __cplusplus
 }
 #endif
