@@ -54,6 +54,17 @@ int fletcher_sum_1d_array(double *a, int size) {
     return sum2 * 256 + sum1;
 }
 
+int fletcher_sum_1d_array_float(float *a, int size) {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < size; ++i) {
+        sum1 = matlab_modulo((sum1 + a[i]),255);
+        sum2 = matlab_modulo((sum2 + sum1),255);
+    }
+
+    return sum2 * 256 + sum1;
+}
+
 int fletcher_sum_2d_array(double *a, int nbRow, int nbCol) {
     double sum1 = 0;
     double sum2 = 0;
