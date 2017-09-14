@@ -88,3 +88,22 @@ int fletcher_sum_1d_array_int(int *a, int size) {
 
     return sum2 * 256 + sum1;
 }
+
+func_ret_t create_vector_from_random(float **vp, int size) {
+  float *v;
+  int i;
+
+  srand(time(NULL));
+
+  v = (float *) malloc(size*sizeof(float));
+  if( v == NULL){
+    return RET_FAILURE;
+  }
+
+  for(i = 0; i < size; ++i){
+    v[i] = common_randJS();
+  }
+
+  *vp = v;
+  return RET_SUCCESS;
+}
