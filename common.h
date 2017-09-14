@@ -63,6 +63,8 @@ int fletcher_sum_1d_array_int(int *a, int size);
 
 int fletcher_sum_1d_array_float(float *a, int size);
 
+int fletcher_sum_1d_array_unsigned_int(unsigned int *a, int size);
+
 #ifdef __cplusplus
 }
 #endif

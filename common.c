@@ -88,3 +88,14 @@ int fletcher_sum_1d_array_int(int *a, int size) {
 
     return sum2 * 256 + sum1;
 }
+
+int fletcher_sum_1d_array_unsigned_int(unsigned int *a, int size) {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < size; ++i) {
+        sum1 = matlab_modulo((double)(sum1 + (double)a[i]),(double)255);
+        sum2 = matlab_modulo((double)(sum2 + sum1),(double)255);
+    } 
+
+    return sum2 * 256 + sum1;
+}
